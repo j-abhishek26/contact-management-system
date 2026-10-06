@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Management System</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="header-inner">
+      <h1>📇 Contact Manager</h1>
+      <p>Manage your personal &amp; professional contacts</p>
+    </div>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="container">
+
+    <!-- Toolbar: search + add button -->
+    <div class="toolbar">
+      <input
+        type="text"
+        id="searchInput"
+        class="search-input"
+        placeholder="🔍  Search by name, phone, or email..."
+      />
+      <button class="btn btn-primary" id="addBtn">+ Add Contact</button>
+    </div>
+
+    <!-- Stats bar -->
+    <div class="stats" id="statsBar">
+      <span id="totalCount">0 contacts</span>
+    </div>
+
+    <!-- Contacts grid -->
+    <div class="contacts-grid" id="contactsGrid">
+      <!-- Cards will be rendered here by JS -->
+    </div>
+
+    <!-- Empty state -->
+    <div class="empty-state" id="emptyState" style="display: none;">
+      <div class="empty-icon">📭</div>
+      <h3>No contacts yet</h3>
+      <p>Click <strong>"+ Add Contact"</strong> to add your first contact.</p>
+    </div>
+
+    <!-- Loading state -->
+    <div class="loading" id="loadingState">
+      <div class="spinner"></div>
+      <p>Loading contacts...</p>
+    </div>
+
+  </main>
+
+  <!-- ===== MODAL OVERLAY ===== -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="modalTitle">Add Contact</h2>
+        <button class="modal-close" id="modalCloseBtn">&times;</button>
+      </div>
+
+      <form id="contactForm" novalidate>
+        <div class="form-group">
+          <label for="nameInput">Name <span class="required">*</span></label>
+          <input type="text" id="nameInput" placeholder="e.g. Abhishek Sharma" required />
+          <small class="error-msg" id="nameError"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="phoneInput">Phone <span class="required">*</span></label>
+          <input type="text" id="phoneInput" placeholder="e.g. 9876543210" maxlength="10" required />
+          <small class="error-msg" id="phoneError"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="emailInput">Email <span class="required">*</span></label>
+          <input type="email" id="emailInput" placeholder="e.g. abhishek@example.com" required />
+          <small class="error-msg" id="emailError"></small>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="submitBtn">Save Contact</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== DELETE CONFIRM MODAL ===== -->
+  <div class="modal-overlay" id="deleteModalOverlay">
+    <div class="modal modal-sm">
+      <div class="modal-header">
+        <h2>Delete Contact</h2>
+        <button class="modal-close" id="deleteModalCloseBtn">&times;</button>
+      </div>
+      <p class="delete-msg">Are you sure you want to delete <strong id="deleteName"></strong>?<br/>This action cannot be undone.</p>
+      <div class="form-actions">
+        <button class="btn btn-secondary" id="deleteCancelBtn">Cancel</button>
+        <button class="btn btn-danger" id="deleteConfirmBtn">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TOAST CONTAINER ===== -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
