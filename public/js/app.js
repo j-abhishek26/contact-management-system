@@ -2,7 +2,7 @@
 //  Contact Management System — Frontend JS
 // ========================================
 
-const API = "/contacts";
+const API = "./contacts";
 
 // DOM elements
 const contactsGrid = document.getElementById("contactsGrid");
